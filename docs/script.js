@@ -20,9 +20,9 @@ document.body.addEventListener('mousedown', (event)=>{
     playSound(event.target.getAttribute("data-key"), true);
 });
 
-document.body.addEventListener('mouseup', (event)=>{
-    playSound(event.target.getAttribute("data-key"), false);
-});
+// document.body.addEventListener('mouseup', (event)=>{
+//     playSound(event.target.getAttribute("data-key"), false);
+// });
 
 
 
