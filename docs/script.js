@@ -53,40 +53,44 @@ document.querySelector('.buttons :nth-child(2)').addEventListener('click', ()=>{
 //selecionar oitava
 document.body.addEventListener('click', (event)=>{
     var tgt = event.target;
-    var x;
-    console.log(tgt.className);
     if (tgt.classList.contains("active")){
         return;
     }
+    var octaves = document.querySelectorAll('.octave-btn');
 
-    if(tgt.id == 'octave1' && tgt.classList.contains("active") != 'active'){
+    if(tgt.id == 'octave1' && !tgt.classList.contains("active")){
+        removeActive(octaves);
+       
         octaveSelect(1);
-        x = document.querySelectorAll('#octave-btn');
-        removeActive(x);
         event.target.classList.add('active');
-    }else if(tgt.id == 'octave2' && tgt.classList.contains("active") != 'active'){
+
+    }else if(tgt.id == 'octave2' && !tgt.classList.contains("active")){
+        removeActive(octaves);
+        
         octaveSelect(2); 
-        x = document.querySelectorAll('#octave-btn');
-        removeActive(x);
         event.target.classList.add('active');
-    } else if(tgt.id == 'octave3' && tgt.classList.contains("active") != 'active'){
+
+    } else if(tgt.id == 'octave3' && !tgt.classList.contains("active")){
+        removeActive(octaves);
+        
         octaveSelect(3);
-        x = document.querySelectorAll('#octave-btn');
-        removeActive(x);
         event.target.classList.add('active');
-    } else if(tgt.id == 'octave4' && tgt.classList.contains("active") != 'active'){
+
+    } else if(tgt.id == 'octave4' && !tgt.classList.contains("active")){
+        removeActive(octaves);
+        
         octaveSelect(4);
-        x = document.querySelectorAll('#octave-btn');
-        removeActive(x);
         event.target.classList.add('active');
+
     } 
+
 });
 
 //remove active
-function removeActive(x){
-    x.forEach(x => {
-        x.classList.remove('active');
-    }) 
+function removeActive(octaves){
+    octaves.forEach(oct => { 
+        oct.classList.remove('active');
+    });
 }
 
 function octaveSelect(oct){
@@ -101,9 +105,6 @@ function octaveSelect(oct){
         }
     });
 
-    keys.forEach(key => {
-        console.log(key.src);
-    })
 }
 
 function playSound(sound, compose) {
@@ -115,7 +116,6 @@ function playSound(sound, compose) {
     let audioElement = document.querySelector(`#s_${sound}`);
     if(down.find(element => element == sound) == null && !compose){
         if(sound != null){
-            console.log(keyElement);
 
             audioElement.pause();
             audioElement.currentTime = 0;
@@ -222,7 +222,6 @@ function playComposition(songArray){
         console.log("prev: " + previous);
     }
     previous.forEach(item => {
-        console.log("aa");
         playSound(item, false);
         if(parar) return;
         previous.splice(item);
