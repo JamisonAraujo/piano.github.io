@@ -216,7 +216,7 @@ function playComposition(songArray){
                     console.log(tOut);
                     playSound(`key${songItem}`, false);
                     if(parar) return;
-                } else if(songItem == "´"){
+                } else if(songItem == "´" || songItem == "`"){
                     previous.push("bracketleft", true);
                     tOut = setTimeout(()=>{
                         playSound("bracketleft", true); 
