@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+
+    <head>
+        <meta nome="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Piano</title>
+        <link rel="stylesheet" href="piano.css" />
+
+    </head>
+
+    <body>
+
+        <h1>Piano</h1>
+        <div class="piano">
+            <h2>Oitavas</h2>
+            <div class="oitavas">
+                <div class="octaves">
+                    <button id="octave1" class="octave-btn">1-2</button>
+                    <button id="octave2" class="octave-btn">2-3</button>
+                    <button id="octave3" class="octave-btn active">3-4</button>
+                    <button id="octave4" class="octave-btn">4-5</button>
+                </div>
+            </div>
+    
+
+            <div class="keys">
+                <div data-key="SI" class="white-key"  id="SI">SI</div>
+                <div data-key="keyq" class="white-key"  id="C">Q</div>
+                <div data-key="digit2" class="black_key1"   id="C#">2</div>
+                <div data-key="keyw" class="white-key" id="D">W</div>
+                <div data-key="digit3" class="black_key1"  id="D#">3</div>
+                <div data-key="keye" class="white-key" id="E">E</div>
+                <div data-key="keyr" class="white-key" id="F">R</div>
+                <div data-key="digit5" class="black_key1" id="F#">5</div>
+                <div data-key="keyt" class="white-key" id="G">T</div>
+                <div data-key="digit6" class="black_key1" id="G#">6</div>
+                <div data-key="keyy" class="white-key" id="A">Y</div>
+                <div data-key="digit7" class="black_key1" id="A#">7</div>
+                <div data-key="keyu" class="white-key" id="B">U</div>
+                <div data-key="keyi" class="white-key" id="C">I</div>
+                <div data-key="digit9" class="black_key1" id="C#">9</div>
+                <div data-key="keyo" class="white-key" id="D4">O</div>
+                <div data-key="digit0" class="black_key1"  id="D#4">0</div>
+                <div data-key="keyp" class="white-key" id="E">P</div>
+                <div data-key="bracketleft" class="white-key" id="F">´</div>
+                <div data-key="equal" class="black_key1" id="F#4">=</div>
+                <div data-key="SOL" class="white-key"  id="SOL">SOL</div>
+
+            </div>
+        </div>
+
+        <div class="composer">
+
+            <input type="text" id="input" placeholder="Faça uma composição..." />
+            <div class="silenceTxt">
+                <p>Pausas: <b>;</b> = -1/2, <b>/</b> = -3/4, <b>.</b> = + 1</p>
+                <p>Coloque entre "()" para tocar acorde</p>
+            </div>
+            <div class="buttons">
+                <button>Tocar</button>
+                <button>Parar</button>
+            </div>
+
+        </div>
+    <body>
+
+    
+
+    <audio class="noteSound" id="s_keyq" src="Assets/C3.mp3"></audio>
+    <audio class="noteSound" id="s_digit2" src="Assets/Db3.mp3"></audio>
+    <audio class="noteSound" id="s_keyw" src="Assets/D3.mp3"></audio>
+    <audio class="noteSound" id="s_digit3" src="Assets/Eb3.mp3"></audio>
+    <audio class="noteSound" id="s_keye" src="Assets/E3.mp3"></audio>
+    <audio class="noteSound" id="s_keyr" src="Assets/F3.mp3"></audio>
+    <audio class="noteSound" id="s_digit5" src="Assets/Gb3.mp3"></audio>
+    <audio class="noteSound" id="s_keyt" src="Assets/G3.mp3"></audio>
+    <audio class="noteSound" id="s_digit6" src="Assets/Ab3.mp3"></audio>
+    <audio class="noteSound" id="s_keyy" src="Assets/A3.mp3"></audio>
+    <audio class="noteSound" id="s_digit7" src="Assets/Bb3.mp3"></audio>
+    <audio class="noteSound" id="s_keyu" src="Assets/B3.mp3"></audio>
+    <audio class="noteSound" id="s_keyi" src="Assets/C4.mp3"></audio>
+    <audio class="noteSound" id="s_digit9" src="Assets/Db4.mp3"></audio>
+    <audio class="noteSound" id="s_keyo" src="Assets/D4.mp3"></audio>
+    <audio class="noteSound" id="s_digit0" src="Assets/Eb4.mp3"></audio>
+    <audio class="noteSound" id="s_keyp" src="Assets/E4.mp3"></audio>
+    <audio class="noteSound" id="s_bracketleft" src="Assets/F4.mp3"></audio>
+    <audio class="noteSound" id="s_equal" src="Assets/Gb4.mp3"></audio>
+
+    <script src="script.js"></script>
+
+</html>

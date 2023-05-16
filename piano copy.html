@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+
+    <head>
+        <meta nome="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Piano</title>
+        <link rel="stylesheet" href="styles/piano.css" />
+
+    </head>
+
+    <div class="body">
+
+        <h1>Piano</h1>
+
+        <div class="keys">
+            <div class="upper_keys">
+                <div data-key="dull_keyq" class="dull_keySingle"></div>
+                <div data-key="digit2" class="black_key">2</div>
+                <div data-key="dull_keyw" class="dull_key"></div>
+                <div data-key="digit3" class="black_key">3</div>
+                <div class="double_dull">
+                    <div data-key="dull_keye"></div>
+                    <div data-key="dull_keye"></div>
+                </div>
+                <div data-key="dull_keyr" class="dull_keySingle"></div>
+                <div data-key="digit5" class="black_key">5</div>
+                <div data-key="dull_keyt" class="dull_key"></div>
+                <div data-key="digit6" class="black_key">6</div>
+                <div data-key="dull_keyy" class="dull_key"></div>
+                <div data-key="digit7" class="black_key">7</div>
+                <div class="double_dull">
+                    <div data-key="dull_keyu"></div>
+                    <div data-key="dull_keyu"></div>
+                </div>
+                <div data-key="dull_keyi" class="dull_keySingle"></div>
+                <div data-key="digit9" class="black_keyLast">9</div>
+
+
+
+                
+
+            </div>
+            
+            <div class="white_keys">
+                <div data-key="keyq" class="key"  id="C">Q</div>
+                <div data-key="digit2" class="black_key1"   id="C#">2</div>
+                <div data-key="keyw" class="key" id="D">W</div>
+                <div data-key="digit3" class="black_key1"  id="D#">3</div>
+                <div data-key="keye" class="key" id="E">E</div>
+                <div data-key="keyr" class="key" id="F">R</div>
+                <div data-key="digit5" class="black_key1" id="F#">5</div>
+                <div data-key="keyt" class="key" id="G">T</div>
+                <div data-key="digit6" class="black_key1" id="G#">6</div>
+                <div data-key="keyy" class="key" id="A">Y</div>
+                <div data-key="digit7" class="black_key1" id="A#">7</div>
+                <div data-key="keyu" class="key" id="B">U</div>
+                <div data-key="keyi" class="key" id="C">I</div>
+                <div data-key="digit9" class="black_keyLast" id="C#">9</div>
+            </div>
+        </div>
+
+        <div class="composer">
+
+            <input type="text" id="input" placeholder="Faça uma composição..." />
+            <button>Tocar</button>
+
+        </div>
+    </div>
+
+    
+
+    <audio id="s_keyq" src="Assets/sounds/keyq.mp3"></audio>
+    <audio id="s_keyw" src="Assets/sounds/keyw.mp3"></audio>
+    <audio id="s_keye" src="Assets/sounds/keye.mp3"></audio>
+    <audio id="s_keyr" src="Assets/sounds/keyr.mp3"></audio>
+    <audio id="s_keyt" src="Assets/sounds/keyt.mp3"></audio>
+    <audio id="s_keyy" src="Assets/sounds/keyy.mp3"></audio>
+    <audio id="s_keyu" src="Assets/sounds/keyu.mp3"></audio>
+    <audio id="s_keyi" src="Assets/sounds/keyi.mp3"></audio>
+    <audio id="s_digit2" src="Assets/sounds/key2.mp3"></audio>
+    <audio id="s_digit3" src="Assets/sounds/key3.mp3"></audio>
+    <audio id="s_digit5" src="Assets/sounds/key5.mp3"></audio>
+    <audio id="s_digit6" src="Assets/sounds/key6.mp3"></audio>
+    <audio id="s_digit7" src="Assets/sounds/key7.mp3"></audio>
+    <audio id="s_digit9" src="Assets/sounds/key9.mp3"></audio>
+
+
+
+    <script src="script.js"></script>
+
+</html>
