@@ -108,10 +108,12 @@ function octaveSelect(oct){
         } 
     });
     oct++;
+    console.log(keys.item(i).id + " = " + "Assets/B" + x + ".mp3");
+    
     keys.item(i).src = "Assets/B" + x + ".mp3";
-    keys.forEach(key => {
-        console.log(key.id +" "+ key.src);
-    });
+    // keys.forEach(key => {
+    //     console.log(key.id +" "+ key.src);
+    // });
 
 
 }
@@ -205,14 +207,34 @@ function playComposition(songArray){
             }
 
             if(isNaN(songItem)){
-                previous.push(`key${songItem}`);
-                tOut = setTimeout(()=>{
-                    playSound(`key${songItem}`, true); 
-                }, wait);
-                if(parar) return;
-                console.log(tOut);
-                playSound(`key${songItem}`, false);
-                if(parar) return;
+                if(songItem != "´" && songItem != "["){
+                    previous.push(`key${songItem}`);
+                    tOut = setTimeout(()=>{
+                        playSound(`key${songItem}`, true); 
+                    }, wait);
+                    if(parar) return;
+                    console.log(tOut);
+                    playSound(`key${songItem}`, false);
+                    if(parar) return;
+                } else if(songItem == "´"){
+                    previous.push("bracketleft", true);
+                    tOut = setTimeout(()=>{
+                        playSound("bracketleft", true); 
+                    }, wait);
+                    if(parar) return;
+                    console.log(tOut);
+                    playSound("bracketleft", false);
+                    if(parar) return;
+                } else if(songItem == "["){
+                    previous.push("bracketright", true);
+                    tOut = setTimeout(()=>{
+                        playSound("bracketright", true); 
+                    }, wait);
+                    if(parar) return;
+                    console.log(tOut);
+                    playSound("bracketright", false);
+                    if(parar) return;
+                }
             }
             else{
                 previous.push(`digit${songItem}`);
