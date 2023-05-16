@@ -94,16 +94,25 @@ function removeActive(octaves){
 }
 
 function octaveSelect(oct){
+    let x = oct-1;
     var keys = document.querySelectorAll(".noteSound");
     var notes = ["C", "Db", "D","Eb", "E", "F", "Gb","G", "Ab", "A", "Bb", "B"];
     let i = 0;
     keys.forEach(key => {
-        key.src = "Assets/" + notes[i%notes.length] + oct + ".mp3";
-        i++;
+        if(i< keys.length-1){
+            key.src = "Assets/" + notes[i%notes.length] + oct + ".mp3";
+            i++;
+        }
         if (i == notes.length){
             oct++;
-        }
+        } 
     });
+    oct++;
+    keys.item(i).src = "Assets/B" + x + ".mp3";
+    keys.forEach(key => {
+        console.log(key.id +" "+ key.src);
+    });
+
 
 }
 

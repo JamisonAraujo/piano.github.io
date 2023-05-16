@@ -12,7 +12,6 @@ html {
 }
     
     body {
-        /* min-height: 100vh; */
         justify-content: center;
         align-items: center;
         font-family: Arial, Helvetica, sans-serif;
@@ -49,7 +48,6 @@ html {
         justify-content: space-around;
         background: rgba(78, 41, 41, 0.466);
         backdrop-filter: (10px);
-        /* background-color: #221515; */
     }
     
     .octaves > button {
