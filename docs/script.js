@@ -1,6 +1,6 @@
 var down = [];
-var parar = false;
 var tOut;
+
 document.body.addEventListener('keydown', (event)=>{
     if (down.find(element => element == event.code.toLowerCase()) != null) {
         return;
@@ -27,27 +27,30 @@ document.body.addEventListener('mousedown', (event)=>{
 
 
 // Composição
-document.querySelector('.buttons :nth-child(1)').addEventListener('click', ()=>{
-    let song = document.querySelector('#input').value;
+document.querySelector('.buttons :nth-child(1)').addEventListener('click', (event)=>{
+    var tgt = event.target;
+    document.querySelector('.buttons :nth-child(1)').setAttribute("style", "background-color: grey");    
 
-    if(song !== ''){
-        let songArray = song.split('');
-        playComposition(songArray);
+    if(!tgt.classList.contains('active')){
+        
+        tgt.classList.add('active');
+        let song = document.querySelector('#input').value;
+    
+        if(song !== ''){
+            let songArray = song.split('');
+            playComposition(songArray);
+        }
+
     }
 });
 
 //parar reprodução
 document.querySelector('.buttons :nth-child(2)').addEventListener('click', ()=>{
-    let audios = document.querySelectorAll('audio');
-    parar = true;
-    // playSound(audios, parar);
-    clearInterval(tOut);
-    audios.forEach(audio => {
-        audio.pause();
-        // audio.src = "";
-        audio.currentTime = 0;
+    tOut.forEach(tOut=>{
+        clearTimeout(tOut);
     });
-
+    document.querySelector('.buttons :nth-child(1)').classList.remove("active");
+    document.querySelector('.buttons :nth-child(1)').setAttribute("style", "background-color: green");    
 });
 
 //selecionar oitava
@@ -62,25 +65,29 @@ document.body.addEventListener('click', (event)=>{
         removeActive(octaves);
        
         octaveSelect(1);
-        event.target.classList.add('active');
+        tgt.classList.add('active');
+        tgt.setAttribute("style", "background-color: purple");
 
     }else if(tgt.id == 'octave2' && !tgt.classList.contains("active")){
         removeActive(octaves);
         
         octaveSelect(2); 
-        event.target.classList.add('active');
+        tgt.classList.add('active');
+        tgt.setAttribute("style", "background-color: purple");
 
     } else if(tgt.id == 'octave3' && !tgt.classList.contains("active")){
         removeActive(octaves);
         
         octaveSelect(3);
-        event.target.classList.add('active');
+        tgt.classList.add('active');
+        tgt.setAttribute("style", "background-color: purple");
 
     } else if(tgt.id == 'octave4' && !tgt.classList.contains("active")){
         removeActive(octaves);
         
         octaveSelect(4);
-        event.target.classList.add('active');
+        tgt.classList.add('active');
+        tgt.setAttribute("style", "background-color: purple");
 
     } 
 
@@ -90,9 +97,11 @@ document.body.addEventListener('click', (event)=>{
 function removeActive(octaves){
     octaves.forEach(oct => { 
         oct.classList.remove('active');
+        oct.setAttribute("style", "background-color: rgb(31, 5, 43);");
     });
 }
 
+//aplica as src da respectiva oitava
 function octaveSelect(oct){
     let x = oct-1;
     var keys = document.querySelectorAll(".noteSound");
@@ -108,23 +117,18 @@ function octaveSelect(oct){
         } 
     });
     oct++;
-    console.log(keys.item(i).id + " = " + "Assets/B" + x + ".mp3");
     
     keys.item(i).src = "Assets/B" + x + ".mp3";
-    // keys.forEach(key => {
-    //     console.log(key.id +" "+ key.src);
-    // });
-
-
 }
 
+//recebe a nota e reproduz o som
 function playSound(sound, compose) {
     let keyElement = document.querySelector(`div[data-key="${sound}"]`); 
-    if(keyElement == null || parar) {
-        parar = false;
+    if(keyElement == null) {
         return;
     }
     let audioElement = document.querySelector(`#s_${sound}`);
+
     if(down.find(element => element == sound) == null && !compose){
         if(sound != null){
 
@@ -135,7 +139,7 @@ function playSound(sound, compose) {
         return;
     }
     
-    if(audioElement && !parar){
+    if(audioElement){
         audioElement.currentTime = 0;
         audioElement.play();
     }
@@ -145,116 +149,97 @@ function playSound(sound, compose) {
         
         setTimeout(()=>{
             keyElement.classList.remove('active');
-        }, 300);
-    } else{
-        keyElement.classList.remove('active');
+        }, 2000);
     }
 
 }
 
+// recebe o input e toca automaticamente
 function playComposition(songArray){
     let wait = 0;
-    let onThis = "";
     let previous = [];
     let holdWait = false;
-    let tOut = undefined;
+    tOut = [];
 
     for(let songItem of songArray){
-        if(parar){
-            clearTimeout(tOut);
-            return;
-        }
-        
+
         if(songItem == "/"){
-            if (onThis == songItem){
-                wait += 250;
-            } else {
-                wait -= 750;
-                onThis = songItem;
-            }
+            wait -= 875;
         } else if(songItem == ";"){
-            if (onThis == songItem){
-                wait += 500;
-            } else{
-                wait -= 500;
-                onThis = songItem;
-            }
+            wait -= 750;
         } else if(songItem == "."){
-            if (onThis == songItem){
-                wait += 2000;
-            } else{
-                wait += 1000;
-                onThis = songItem;
-            }
+            wait -= 500;
+        } else if(songItem == ","){
+            wait += 1000;
         } else if(songItem == "("){
             holdWait = true;
-            console.log(holdWait);
         } else if(songItem == ")"){
+
             holdWait = false;
             wait += 1000;
             previous.forEach(item => {
-                playSound(item, parar);
+                playSound(item, false);
                 previous.splice(item);
             });
-        }else{
+
+        } else{
 
             if(!holdWait && wait > 0){
                 previous.forEach(item => {
                     playSound(item, false);
-                    if(parar) return;
                     previous.splice(item);
                 });
             }
 
             if(isNaN(songItem)){
+
                 if(songItem != "´" && songItem != "["){
+
                     previous.push(`key${songItem}`);
-                    tOut = setTimeout(()=>{
-                        playSound(`key${songItem}`, true); 
-                    }, wait);
-                    if(parar) return;
-                    console.log(tOut);
+                    tOut.push(setTimeout(()=>{
+                        playSound(`key${songItem}`, true);
+                    }, wait));
                     playSound(`key${songItem}`, false);
-                    if(parar) return;
+
                 } else if(songItem == "´" || songItem == "`"){
+
                     previous.push("bracketleft", true);
-                    tOut = setTimeout(()=>{
+                    tOut.push(setTimeout(()=>{
                         playSound("bracketleft", true); 
-                    }, wait);
-                    if(parar) return;
-                    console.log(tOut);
+                    }, wait));
                     playSound("bracketleft", false);
-                    if(parar) return;
+
                 } else if(songItem == "["){
+
                     previous.push("bracketright", true);
-                    tOut = setTimeout(()=>{
+                    tOut.push(setTimeout(()=>{
                         playSound("bracketright", true); 
-                    }, wait);
-                    if(parar) return;
-                    console.log(tOut);
+                    }, wait));
                     playSound("bracketright", false);
-                    if(parar) return;
+                    
                 }
-            }
-            else{
+            } else{
+
                 previous.push(`digit${songItem}`);
                 timeOut = setTimeout(()=>{
                     playSound(`digit${songItem}`, true);
                 }, wait);
-                if(parar) return;
 
             }
             if(!holdWait){
                 wait += 1000;
             }
-            onThis = "";
         }
-
-        console.log("prev: " + previous);
     }
+    
+    tOut.push(setTimeout(()=>{
+        document.querySelector('.buttons :nth-child(1)').classList.remove("active");
+        document.querySelector('.buttons :nth-child(1)').setAttribute("style", "background-color: green");    
+
+    }, wait));
+
     previous.forEach(item => {
         playSound(item, false);
-        if(parar) return;
         previous.splice(item);
     });
 }

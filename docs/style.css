@@ -57,6 +57,10 @@ html {
         color: rgb(209, 161, 3);
         background-color: rgb(31, 5, 43);
     }
+
+    .octaves > :nth-child(3){
+        background-color: purple;
+    }
     
     .black_key1 {
         width: 2.5rem;
@@ -124,14 +128,24 @@ html {
     }
     
     .composer {
-        width: 100vw;
-        margin-top: 2rem;
+        display: flex;
+        width: 100%;
+        margin-top: 1rem;
         text-align: center;
         margin-bottom: 4vw;
+        justify-content: space-around;
+        
+    }
+
+    .entry{
+        width: 60%;
+    }
+    .blank{
+        width: 24%;
     }
     
     .composer #input {
-        width: 40%;
+        width: 100%;
         text-align: center;
         outline: none;
         font-size: 1.7rem;
@@ -139,14 +153,17 @@ html {
     }
     
     .silenceTxt {
+        width: 18%;
+        margin-right: 5vw;
         color: #FFF;
+        background-color: #57160b;
         text-align: center;
-        font-size: 1vw;
+        font-size: 1.5vw;
     }
     
     .buttons {
         display: flex;
-        width: 30%;
+        width: 100%;
         margin: auto;
         justify-content: space-between;
     }
@@ -162,13 +179,16 @@ html {
         margin-top: 1rem;
         cursor: pointer;
     }
+    .buttons :nth-child(1) {
+        background: green;
+    }
     
     .buttons :nth-child(2) {
         background: red;
     }
     
     .composer button:hover {
-        background-color: rgba(0, 0, 0, 0.2);
+        background-color: rgba(226, 211, 2, 0.527);
     }
     
     footer {
@@ -225,7 +245,7 @@ html {
     .silenceTxt {
         color: #FFF;
         text-align: center;
-        font-size: 1vh;
+        font-size: 2.2vh;
     }
     
     .composer button {

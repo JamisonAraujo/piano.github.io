@@ -55,15 +55,21 @@
 
         <div class="composer">
 
-            <input type="text" id="input" placeholder="Faça uma composição..." />
             <div class="silenceTxt">
-                <p>Pausas: <b>;</b> = -1/2, <b>/</b> = -3/4, <b>.</b> = + 1</p>
-                <p>Coloque entre "()" para tocar acorde</p>
+                <p>Pausas: "," = 1t, "." = 1t/2, ";" =  1t/4, <b>;</b> =  1t/8</p>
+                <p>Coloque entre "()" para criar um acorde</p>
             </div>
-            <div class="buttons">
-                <button>Tocar</button>
-                <button>Parar</button>
+            <div class="comp-box">
+
+                <input type="text" id="input" placeholder="Faça uma composição..." />
+                <div class="buttons">
+                    <button tag="play">Tocar</button>
+                    <button class="stop">Parar</button>
+                </div>
+
             </div>
+
+            <div class="blank">&nbsp</div>
 
         </div>
         <footer>created by Jamison Araujo</footer>
